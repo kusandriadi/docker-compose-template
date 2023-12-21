@@ -1,0 +1,24 @@
+version: '3.8'
+name: mongodb-and-postgres
+
+services:
+  postgres:
+    image: postgres:16.1
+    ports:
+      - 5432:5432
+    volumes:
+      - ~/apps/postgres:/c/Users/kusan/Documents/data/postgresql/data
+    environment:
+      - POSTGRES_PASSWORD=admin
+      - POSTGRES_USER=admin
+  mongodb:
+    image: mongodb/mongodb-community-server:6.0-ubi8
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: admin
+      MONGO_INITDB_ROOT_PASSWORD: admin
+    ports:
+      - 27017:27017
+    volumes:
+      - "dbdata6:/c/Users/kusan/Documents/data/mongodb"
+volumes:
+  dbdata6:
