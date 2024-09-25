@@ -7,7 +7,7 @@ services:
     ports:
       - 5432:5432
     volumes:
-      - 'postgres_data:/d/docker/postgresql/data'
+      - ~/apps/postgres:/c/Users/kusan/Documents/data/postgresql/data
     environment:
       - POSTGRES_PASSWORD=admin
       - POSTGRES_USER=admin
@@ -17,31 +17,8 @@ services:
       MONGO_INITDB_ROOT_USERNAME: admin
       MONGO_INITDB_ROOT_PASSWORD: admin
     ports:
-      - '27017-27019:27017-27019'
+      - 27017:27017
     volumes:
-      - 'mongodb_data:/d/docker/mongodb/data'
-  redis:
-    image: 'docker.io/bitnami/redis:7.0.14'
-    container_name: redis-local
-    environment:
-        - ALLOW_EMPTY_PASSWORD=yes
-    ports:
-        - '6379:6379'
-    volumes:
-        - 'redis_data:/d/docker/redis/data'
-  memcached:
-    image: 'memcached:1.6.12-alpine3.14'
-    container_name: memcached-local
-    ports:
-        - '11211:11211'
-    volumes:
-        - 'memcached_data:/d/docker/memcached/data'
+      - "dbdata6:/c/Users/kusan/Documents/data/mongodb"
 volumes:
-  postgres_data:
-    driver: local
-  mongodb_data:
-    driver: local
-  redis_data:
-    driver: local
-  memcached_data:
-    driver: local
+  dbdata6:

@@ -1,0 +1,14 @@
+version: '3.8'
+name: pgadmin4
+
+services:
+ pgadmin:
+    image: dpage/pgadmin4
+    container_name: pgadmin_container
+    environment:
+      PGADMIN_DEFAULT_EMAIL: kus.andriadi@gdn-commerce.com    # Set to "admin"
+      PGADMIN_DEFAULT_PASSWORD: admin # Set to "admin"
+    ports:
+      - "8181:80"
+    volumes:
+      - ~/apps/pgadmin:/c/Users/kusan/Documents/data/pgadmin
