@@ -3,41 +3,34 @@ name: consul-and-vault
 
 services:
   vault:
-    image: hashicorp/vault:latest
     container_name: vault
+    build:
+      context: ./vault
+      dockerfile: Dockerfile
     ports:
       - 8200:8200
     volumes:
-      - 'vault_config:/d/docker/vault/config'
-      - 'vault_policies:/d/docker/vault/policies'
-      - 'vault_data:/d/docker/vault/data'
-      - 'vault_log:/d/docker/vault/logs'
+      - ./vault/config:/c/Users/kusan/Documents/data/vault/config
+      - ./vault/policies:/c/Users/kusan/Documents/data/vault/policies
+      - ./vault/data:/c/Users/kusan/Documents/data/vault/data
+      - ./vault/logs:/c/Users/kusan/Documents/data/vault/logs
     environment:
       - VAULT_ADDR=http://127.0.0.1:8200
-    command: server -config=/d/docker/vault-config.json
+    command: server -config=/c/Users/kusan/Documents/data/vault/config/vault-config.json
     cap_add:
       - IPC_LOCK
     depends_on:
       - consul
   consul:
-    image: hashicorp/consul:latest
     container_name: consul
+    build:
+      context: ./consul
+      dockerfile: Dockerfile
     ports:
       - 8500:8500
-    command: agent -server -bind 0.0.0.0 -client 0.0.0.0 -bootstrap-expect 1 -config-file=consul-config.json
+    command: agent -server -bind 0.0.0.0 -client 0.0.0.0 -bootstrap-expect 1 -config-file=/consul/config/config.json
     volumes:
-      - 'consul_config:/d/docker/consul-config.json'
-      - 'consul_data:/d/docker/vault/data'
+      - ./consul/config/consul-config.json:/c/Users/kusan/Documents/data/consul/config/config.json
+      - ./consul/data:/c/Users/kusan/Documents/data/consul/data
 volumes:
-    vault_config:
-        driver: local
-    vault_policies:
-        driver: local
-    vault_data:
-        driver: local
-    vault_log:
-        driver: local
-    consul_config:
-        driver: local
-    consul_data:
-        driver: local
+  dbdata6:
