@@ -9,7 +9,7 @@ services:
         ports:
             - '2181:2181'
         volumes:
-            - 'zookeeper_data:/d/docker/kafka'
+            - 'zookeeper_data:/c/Users/kusan/Documents/data/kafka'
         environment:
             - ALLOW_ANONYMOUS_LOGIN=yes
               
