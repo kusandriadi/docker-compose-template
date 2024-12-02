@@ -5,7 +5,7 @@ services:
   vault:
     container_name: vault
     build:
-      context: ./vault
+      context: /c/Users/kusan/Documents/data/vault
       dockerfile: Dockerfile
     ports:
       - 8200:8200
