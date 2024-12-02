@@ -4,9 +4,7 @@ name: consul-and-vault
 services:
   vault:
     container_name: vault
-    build:
-      context: /Users/kusan/Documents/data/vault
-      dockerfile: Dockerfile
+    image: hashicorp/vault:latest
     ports:
       - 8200:8200
     volumes:
@@ -23,9 +21,7 @@ services:
       - consul
   consul:
     container_name: consul
-    build:
-      context: /Users/kusan/Documents/data/consul
-      dockerfile: Dockerfile
+    image: hashicorp/consul:latest
     ports:
       - 8500:8500
     command: agent -server -bind 0.0.0.0 -client 0.0.0.0 -bootstrap-expect 1 -config-file=/consul/config/config.json
