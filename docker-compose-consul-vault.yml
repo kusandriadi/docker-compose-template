@@ -24,7 +24,7 @@ services:
   consul:
     container_name: consul
     build:
-      context: ./consul
+      context: /c/Users/kusan/Documents/data/consul
       dockerfile: Dockerfile
     ports:
       - 8500:8500
