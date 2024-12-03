@@ -14,7 +14,7 @@ services:
       - ./vault/logs:/c/Users/kusan/Documents/data/vault/logs
     environment:
       - VAULT_ADDR=http://127.0.0.1:8200
-    command: server -config=/c/Users/kusan/Documents/data/vault/config/vault-config.json
+    command: server -config=/c/Users/kusan/Documents/data/vault/config/config.json
     cap_add:
       - IPC_LOCK
     depends_on:
@@ -24,7 +24,7 @@ services:
     image: hashicorp/consul:latest
     ports:
       - 8500:8500
-    command: agent -server -bind 0.0.0.0 -client 0.0.0.0 -bootstrap-expect 1 -config-file=/consul/config/config.json
+    command: agent -server -bind 0.0.0.0 -client 0.0.0.0 -bootstrap-expect 1 -config-file=/c/Users/kusan/Documents/data/consul/config/config.json
     volumes:
       - ./consul/config/consul-config.json:/c/Users/kusan/Documents/data/consul/config/config.json
       - ./consul/data:/c/Users/kusan/Documents/data/consul/data
