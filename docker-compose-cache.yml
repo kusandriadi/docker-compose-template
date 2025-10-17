@@ -8,15 +8,31 @@ services:
     ports:
       - '6379:6379'
     command: redis-server --save 20 1 --loglevel warning
-    volumes: 
+    volumes:
       - redis-cache:/data
-  memcached:  
+    deploy:
+      resources:
+        limits:
+          cpus: '0.1'
+          memory: 64M
+        reservations:
+          cpus: '0.05'
+          memory: 32M
+  memcached:
     image: memcached:1.6.18
     restart: always
-    ports:  
-      - '11211:11211' 
-    volumes: 
+    ports:
+      - '11211:11211'
+    volumes:
       - memcached:/data
+    deploy:
+      resources:
+        limits:
+          cpus: '0.1'
+          memory: 64M
+        reservations:
+          cpus: '0.05'
+          memory: 32M
 volumes:
   redis-cache:
     driver: local

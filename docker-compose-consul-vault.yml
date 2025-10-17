@@ -20,6 +20,14 @@ services:
       - IPC_LOCK
     depends_on:
       - consul
+    deploy:
+      resources:
+        limits:
+          cpus: '0.25'
+          memory: 128M
+        reservations:
+          cpus: '0.1'
+          memory: 64M
 
   consul:
     build:
@@ -31,3 +39,11 @@ services:
     volumes:
       - ./consul/config/consul-config.json:/consul/config/config.json
       - ./consul/data:/consul/data
+    deploy:
+      resources:
+        limits:
+          cpus: '0.25'
+          memory: 128M
+        reservations:
+          cpus: '0.1'
+          memory: 64M

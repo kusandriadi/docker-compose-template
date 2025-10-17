@@ -12,7 +12,15 @@ services:
             - 'zookeeper_data:/c/Users/kusan/Documents/data/kafka'
         environment:
             - ALLOW_ANONYMOUS_LOGIN=yes
-              
+        deploy:
+          resources:
+            limits:
+              cpus: '0.25'
+              memory: 256M
+            reservations:
+              cpus: '0.1'
+              memory: 128M
+
     #https://hub.docker.com/r/bitnami/kafka
     kafka:
         image: 'bitnami/kafka:latest'
@@ -29,7 +37,15 @@ services:
             - 'KAFKA_CFG_ADVERTISED_LISTENERS=INSIDE://localhost:9092'
             - 'KAFKA_CFG_INTER_BROKER_LISTENER_NAME=INSIDE'
         depends_on:
-            - zookeeper 
+            - zookeeper
+        deploy:
+          resources:
+            limits:
+              cpus: '0.25'
+              memory: 256M
+            reservations:
+              cpus: '0.1'
+              memory: 128M 
             
 volumes:
     zookeeper_data:
