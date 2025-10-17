@@ -50,12 +50,22 @@ pip --version
 
 Expected output:
 ```
-pip 22.2.1 from C:\xxx\Python310\lib\site-packages\pip (python 3.10)
+pip 25.0.1 from c:\python38\lib\site-packages\pip (python 3.8)
 ```
 
 Install podman-compose:
 ```bash
 pip install podman-compose
+```
+
+Verify installation:
+```bash
+podman-compose --version
+```
+Expected output:
+```
+podman-compose version 1.4.1
+podman version 5.5.1
 ```
 
 ## Resource Limits
