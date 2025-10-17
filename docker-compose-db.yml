@@ -3,6 +3,7 @@ name: mongodb-and-postgres
 
 services:
   postgres:
+    container_name: postgres-16.1
     image: postgres:16.1
     ports:
       - 5432:5432
@@ -20,6 +21,7 @@ services:
           cpus: '0.1'
           memory: 64M
   mongodb:
+    container_name: mongodb-6.0
     image: mongodb/mongodb-community-server:6.0-ubi8
     environment:
       MONGO_INITDB_ROOT_USERNAME: mongo

@@ -3,6 +3,7 @@ name: cache
 
 services:
   redis-cache:
+    container_name: redis-6.2
     image: redis:6.2-alpine
     restart: always
     ports:
@@ -19,6 +20,7 @@ services:
           cpus: '0.05'
           memory: 32M
   memcached:
+    container_name: memcached-1.6.18
     image: memcached:1.6.18
     restart: always
     ports:

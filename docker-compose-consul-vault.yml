@@ -3,6 +3,7 @@ version: '3.6'
 services:
 
   vault:
+    container_name: vault-server
     build:
       context: ./vault
       dockerfile: Dockerfile
@@ -30,6 +31,7 @@ services:
           memory: 64M
 
   consul:
+    container_name: consul-server
     build:
       context: ./consul
       dockerfile: Dockerfile

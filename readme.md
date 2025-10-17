@@ -15,6 +15,7 @@ All services are configured with minimal resource limits optimized for running m
   - [Using Podman Desktop](#using-podman-desktop)
 - [Managing Services](#managing-services)
 - [Service Access](#service-access)
+- [Container Names](#container-names)
 - [Notes](#notes)
 
 ## Prerequisites
@@ -176,9 +177,33 @@ Once services are running, you can access them at:
 - **Vault**: `http://localhost:8200`
 - **pgAdmin**: `http://localhost:8181`
 
+## Container Names
+
+All containers are named with their service name and version for easy identification:
+
+- `redis-6.2` - Redis cache server
+- `memcached-1.6.18` - Memcached cache server
+- `postgres-16.1` - PostgreSQL database
+- `mongodb-6.0` - MongoDB database
+- `kafka-latest` - Apache Kafka
+- `zookeeper-latest` - Apache Zookeeper
+- `consul-server` - HashiCorp Consul
+- `vault-server` - HashiCorp Vault
+- `pgadmin4` - pgAdmin web interface
+
+You can view running containers with:
+```bash
+# Docker Desktop
+docker ps
+
+# Podman Desktop
+podman ps
+```
+
 ## Notes
 
 - Resource limits are set to minimum values for development purposes
 - If services fail to start or become unresponsive, you may need to increase resource limits
 - For production use, significantly higher resource limits are recommended
 - All credentials shown here are defaults for development only - change them for production use
+- All containers are named with their version for easy identification
