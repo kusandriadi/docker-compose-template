@@ -11,7 +11,7 @@ services:
     ports:
       - "8181:80"
     volumes:
-      - ~/apps/pgadmin:/c/Users/kusan/Documents/data/pgadmin
+      - /c/Users/kusan/Documents/data/pgadmin:/var/lib/pgadmin
     deploy:
       resources:
         limits:
