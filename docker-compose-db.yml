@@ -8,7 +8,7 @@ services:
     ports:
       - 5432:5432
     volumes:
-      - /c/Users/kusan/Documents/data/postgresql:/var/lib/postgresql/data
+      - postgres_data:/var/lib/postgresql/data
     environment:
       - POSTGRES_PASSWORD=admin
       - POSTGRES_USER=admin
@@ -24,12 +24,12 @@ services:
     container_name: mongodb-6.0
     image: mongodb/mongodb-community-server:6.0-ubi8
     environment:
-      MONGO_INITDB_ROOT_USERNAME: mongo
-      MONGO_INITDB_ROOT_PASSWORD: mongo
+      MONGODB_INITDB_ROOT_USERNAME: mongo
+      MONGODB_INITDB_ROOT_PASSWORD: mongo
     ports:
       - 27017:27017
     volumes:
-      - /c/Users/kusan/Documents/data/mongodb:/data/db
+      - mongodb_data:/data/db
     deploy:
       resources:
         limits:
@@ -38,3 +38,9 @@ services:
         reservations:
           cpus: '0.1'
           memory: 64M
+
+volumes:
+  postgres_data:
+    driver: local
+  mongodb_data:
+    driver: local
