@@ -13,6 +13,11 @@ services:
         environment:
             ZOOKEEPER_CLIENT_PORT: 2181
             ZOOKEEPER_TICK_TIME: 2000
+        healthcheck:
+            test: ["CMD", "nc", "-z", "localhost", "2181"]
+            interval: 10s
+            timeout: 5s
+            retries: 5
         deploy:
           resources:
             limits:
@@ -39,7 +44,8 @@ services:
             KAFKA_TRANSACTION_STATE_LOG_MIN_ISR: 1
             KAFKA_TRANSACTION_STATE_LOG_REPLICATION_FACTOR: 1
         depends_on:
-            - zookeeper
+            zookeeper:
+                condition: service_healthy
         deploy:
           resources:
             limits:
