@@ -8,7 +8,7 @@ services:
     ports:
       - 5432:5432
     volumes:
-      - ~/apps/postgres:/c/Users/kusan/Documents/data/postgresql/data
+      - /c/Users/kusan/Documents/data/postgresql:/var/lib/postgresql/data
     environment:
       - POSTGRES_PASSWORD=admin
       - POSTGRES_USER=admin
@@ -29,7 +29,7 @@ services:
     ports:
       - 27017:27017
     volumes:
-      - "dbdata6:/c/Users/kusan/Documents/data/mongodb"
+      - /c/Users/kusan/Documents/data/mongodb:/data/db
     deploy:
       resources:
         limits:
@@ -38,5 +38,3 @@ services:
         reservations:
           cpus: '0.1'
           memory: 64M
-volumes:
-  dbdata6:

@@ -195,8 +195,8 @@ All containers are named with their service name and version for easy identifica
 - `memcached-1.6.18` - Memcached cache server
 - `postgres-16.1` - PostgreSQL database
 - `mongodb-6.0` - MongoDB database
-- `kafka-3.6` - Apache Kafka
-- `zookeeper-3.9` - Apache Zookeeper
+- `kafka-7.5.0` - Apache Kafka (Confluent Platform)
+- `zookeeper-7.5.0` - Apache Zookeeper (Confluent Platform)
 - `consul-server` - HashiCorp Consul
 - `vault-server` - HashiCorp Vault
 - `pgadmin4` - pgAdmin web interface

@@ -2,16 +2,17 @@ version: '3.8'
 name: kafka-and-zookeper
 
 services:
-    # https://hub.docker.com/r/bitnami/zookeeper
+    # https://hub.docker.com/r/confluentinc/cp-zookeeper
     zookeeper:
-        image: 'bitnami/zookeeper:3.9'
-        container_name: zookeeper-3.9
+        image: 'confluentinc/cp-zookeeper:7.5.0'
+        container_name: zookeeper-7.5.0
         ports:
             - '2181:2181'
         volumes:
-            - 'zookeeper_data:/c/Users/kusan/Documents/data/kafka'
+            - 'zookeeper_data:/c/Users/kusan/Documents/data/kafka/zookeper'
         environment:
-            - ALLOW_ANONYMOUS_LOGIN=yes
+            ZOOKEEPER_CLIENT_PORT: 2181
+            ZOOKEEPER_TICK_TIME: 2000
         deploy:
           resources:
             limits:
@@ -21,21 +22,22 @@ services:
               cpus: '0.1'
               memory: 128M
 
-    #https://hub.docker.com/r/bitnami/kafka
+    #https://hub.docker.com/r/confluentinc/cp-kafka
     kafka:
-        image: 'bitnami/kafka:3.6'
-        container_name: kafka-3.6
+        image: 'confluentinc/cp-kafka:7.5.0'
+        container_name: kafka-7.5.0
         ports:
             - '9092:9092'
         volumes:
-            - 'kafka_data:/d/docker/kafka'
+            - 'kafka_data:/c/Users/kusan/Documents/data/kafka'
         environment:
-            - 'ALLOW_PLAINTEXT_LISTENER=yes'
-            - 'KAFKA_CFG_ZOOKEEPER_CONNECT=zookeeper:2181'
-            - 'KAFKA_CFG_LISTENER_SECURITY_PROTOCOL_MAP=INSIDE:PLAINTEXT'
-            - 'KAFKA_CFG_LISTENERS=INSIDE://:9092'
-            - 'KAFKA_CFG_ADVERTISED_LISTENERS=INSIDE://localhost:9092'
-            - 'KAFKA_CFG_INTER_BROKER_LISTENER_NAME=INSIDE'
+            KAFKA_BROKER_ID: 1
+            KAFKA_ZOOKEEPER_CONNECT: 'zookeeper:2181'
+            KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: PLAINTEXT:PLAINTEXT,PLAINTEXT_HOST:PLAINTEXT
+            KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://kafka:29092,PLAINTEXT_HOST://localhost:9092
+            KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
+            KAFKA_TRANSACTION_STATE_LOG_MIN_ISR: 1
+            KAFKA_TRANSACTION_STATE_LOG_REPLICATION_FACTOR: 1
         depends_on:
             - zookeeper
         deploy:

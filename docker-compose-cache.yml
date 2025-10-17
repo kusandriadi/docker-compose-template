@@ -10,7 +10,7 @@ services:
       - '6379:6379'
     command: redis-server --save 20 1 --loglevel warning
     volumes:
-      - redis-cache:/data
+      - /c/Users/kusan/Documents/data/cache/redis:/data
     deploy:
       resources:
         limits:
@@ -25,8 +25,6 @@ services:
     restart: always
     ports:
       - '11211:11211'
-    volumes:
-      - memcached:/data
     deploy:
       resources:
         limits:
@@ -35,8 +33,3 @@ services:
         reservations:
           cpus: '0.05'
           memory: 32M
-volumes:
-  redis-cache:
-    driver: local
-  memcached:
-    driver: local
