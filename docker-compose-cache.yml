@@ -13,12 +13,12 @@ services:
       - /c/Users/kusan/Documents/data/cache/redis:/data
     deploy:
       resources:
-        limits:
-          cpus: '0.1'
-          memory: 64M
         reservations:
-          cpus: '0.05'
+          cpus: '0.15'
           memory: 32M
+        limits:
+          cpus: '0.30'
+          memory: 64M
   memcached:
     container_name: memcached-1.6.18
     image: memcached:1.6.18
@@ -27,9 +27,9 @@ services:
       - '11211:11211'
     deploy:
       resources:
-        limits:
-          cpus: '0.1'
-          memory: 64M
         reservations:
-          cpus: '0.05'
+          cpus: '0.15'
           memory: 32M
+        limits:
+          cpus: '0.30'
+          memory: 64M

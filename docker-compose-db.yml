@@ -14,12 +14,12 @@ services:
       - POSTGRES_USER=admin
     deploy:
       resources:
-        limits:
-          cpus: '0.25'
-          memory: 128M
         reservations:
-          cpus: '0.1'
-          memory: 64M
+          cpus: '0.2'
+          memory: 128M
+        limits:
+          cpus: '0.4'
+          memory: 256M
   mongodb:
     container_name: mongodb-6.0
     image: mongodb/mongodb-community-server:6.0-ubi8
@@ -32,12 +32,12 @@ services:
       - mongodb_data:/data/db
     deploy:
       resources:
-        limits:
-          cpus: '0.25'
-          memory: 128M
         reservations:
-          cpus: '0.1'
-          memory: 64M
+          cpus: '0.2'
+          memory: 128M
+        limits:
+          cpus: '0.4'
+          memory: 256M
 
 volumes:
   postgres_data:
