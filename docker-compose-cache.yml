@@ -14,10 +14,10 @@ services:
     deploy:
       resources:
         reservations:
-          cpus: '0.15'
+          cpus: '0.4'
           memory: 32M
         limits:
-          cpus: '0.30'
+          cpus: '0.8'
           memory: 64M
   memcached:
     container_name: memcached-1.6.18
@@ -28,8 +28,8 @@ services:
     deploy:
       resources:
         reservations:
-          cpus: '0.15'
+          cpus: '0.4'
           memory: 32M
         limits:
-          cpus: '0.30'
+          cpus: '0.8'
           memory: 64M
