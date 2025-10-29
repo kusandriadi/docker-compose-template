@@ -1,0 +1,18 @@
+version: '3.8'
+name: fake-gcs-server
+
+services:
+  fake-gcs:
+    container_name: fake-gcs-server
+    image: fsouza/fake-gcs-server:latest
+    ports:
+      - 4443:4443
+    command: ["-scheme", "http"]
+    deploy:
+      resources:
+        reservations:
+          cpus: '0.5'
+          memory: 128M
+        limits:
+          cpus: '1'
+          memory: 256M

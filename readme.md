@@ -76,8 +76,9 @@ All services are configured with minimal resource limits:
 - **Kafka & Zookeeper**: 0.25 CPU / 256MB
 - **Consul & Vault**: 0.25 CPU / 128MB
 - **pgAdmin**: 0.1 CPU / 64MB
+- **Fake GCS Server**: 0.25 CPU / 64MB
 
-Total if all services run: ~1.8 CPUs / ~1.2GB RAM
+Total if all services run: ~2.05 CPUs / ~1.26GB RAM
 
 ## Running Services
 
@@ -108,6 +109,11 @@ docker-compose -f ./docker-compose-cache.yml up -d
 docker-compose -f ./docker-compose-pgadmin.yml up -d
 ```
 
+#### Fake GCS Server
+```bash
+docker-compose -f ./docker-compose-fake-gcs.yml up -d
+```
+
 ### Using Podman Desktop
 
 #### Database Services (PostgreSQL & MongoDB)
@@ -133,6 +139,11 @@ podman-compose -f ./docker-compose-cache.yml up -d
 #### pgAdmin
 ```bash
 podman-compose -f ./docker-compose-pgadmin.yml up -d
+```
+
+#### Fake GCS Server
+```bash
+podman-compose -f ./docker-compose-fake-gcs.yml up -d
 ```
 
 ## Managing Services
@@ -186,6 +197,7 @@ Once services are running, you can access them at:
 - **Consul UI**: `http://localhost:8500`
 - **Vault**: `http://localhost:8200`
 - **pgAdmin**: `http://localhost:8181`
+- **Fake GCS Server**: `http://localhost:4443`
 
 ## Container Names
 
@@ -200,6 +212,7 @@ All containers are named with their service name and version for easy identifica
 - `consul-server` - HashiCorp Consul
 - `vault-server` - HashiCorp Vault
 - `pgadmin4` - pgAdmin web interface
+- `fake-gcs-server` - Fake Google Cloud Storage server
 
 You can view running containers with:
 ```bash
