@@ -49,11 +49,11 @@ services:
         deploy:
           resources:
             reservations:
-              cpus: '0.4'
-              memory: 256M
-            limits:
-              cpus: '0.8'
+              cpus: '1'
               memory: 512M
+            limits:
+              cpus: '2'
+              memory: 1024M
             
 volumes:
     zookeeper_data:
