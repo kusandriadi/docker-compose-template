@@ -1,0 +1,21 @@
+version: '3.8'
+name: wiremock
+
+services:
+  wiremock:
+    container_name: wiremock
+    image: wiremock/wiremock:latest
+    restart: always
+    ports:
+      - '10000:8080'
+    volumes:
+      - /c/Users/kusan/Documents/data/wiremock:/home/wiremock
+    command: ["--global-response-templating", "--verbose"]
+    deploy:
+      resources:
+        reservations:
+          cpus: '0.5'
+          memory: 128M
+        limits:
+          cpus: '1'
+          memory: 256M
