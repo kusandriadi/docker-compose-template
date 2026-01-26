@@ -1,0 +1,19 @@
+version: '3.8'
+name: playwright
+
+services:
+  playwright:
+    container_name: playwright
+    image: mcr.microsoft.com/playwright:v1.50.0-noble
+    restart: unless-stopped
+    ports:
+      - '3000:3000'
+    command: npx playwright run-server --port 3000 --host 0.0.0.0
+    deploy:
+      resources:
+        reservations:
+          cpus: '0.5'
+          memory: 512M
+        limits:
+          cpus: '2'
+          memory: 2G
