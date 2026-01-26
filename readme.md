@@ -77,8 +77,10 @@ All services are configured with minimal resource limits:
 - **Consul & Vault**: 0.25 CPU / 128MB
 - **pgAdmin**: 0.1 CPU / 64MB
 - **Fake GCS Server**: 0.25 CPU / 64MB
+- **WireMock**: 0.5-1 CPU / 128-256MB
+- **Playwright**: 0.5-2 CPU / 512MB-2GB
 
-Total if all services run: ~2.05 CPUs / ~1.26GB RAM
+Total if all services run: ~3.05 CPUs / ~2.03GB RAM
 
 ## Running Services
 
@@ -114,6 +116,16 @@ docker-compose -f ./docker-compose-pgadmin.yml up -d
 docker-compose -f ./docker-compose-fake-gcs.yml up -d
 ```
 
+#### WireMock
+```bash
+docker-compose -f ./docker-compose-wiremock.yml up -d
+```
+
+#### Playwright
+```bash
+docker-compose -f ./docker-compose-playwright.yml up -d
+```
+
 ### Using Podman Desktop
 
 #### Database Services (PostgreSQL & MongoDB)
@@ -144,6 +156,16 @@ podman-compose -f ./docker-compose-pgadmin.yml up -d
 #### Fake GCS Server
 ```bash
 podman-compose -f ./docker-compose-fake-gcs.yml up -d
+```
+
+#### WireMock
+```bash
+podman-compose -f ./docker-compose-wiremock.yml up -d
+```
+
+#### Playwright
+```bash
+podman-compose -f ./docker-compose-playwright.yml up -d
 ```
 
 ## Managing Services
@@ -198,6 +220,8 @@ Once services are running, you can access them at:
 - **Vault**: `http://localhost:8200`
 - **pgAdmin**: `http://localhost:8181`
 - **Fake GCS Server**: `http://localhost:4443`
+- **WireMock**: `http://localhost:8088`
+- **Playwright**: `ws://localhost:3000`
 
 ## Container Names
 
@@ -213,6 +237,8 @@ All containers are named with their service name and version for easy identifica
 - `vault-server` - HashiCorp Vault
 - `pgadmin4` - pgAdmin web interface
 - `fake-gcs-server` - Fake Google Cloud Storage server
+- `wiremock` - WireMock API mock server
+- `playwright` - Playwright browser automation server
 
 You can view running containers with:
 ```bash

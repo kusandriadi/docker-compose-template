@@ -4,7 +4,7 @@ name: playwright
 services:
   playwright:
     container_name: playwright
-    image: mcr.microsoft.com/playwright:v1.50.0-noble
+    image: mcr.microsoft.com/playwright:v1.50.0
     restart: unless-stopped
     ports:
       - '3000:3000'
