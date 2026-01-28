@@ -79,8 +79,9 @@ All services are configured with minimal resource limits:
 - **Fake GCS Server**: 0.25 CPU / 64MB
 - **WireMock**: 0.5-1 CPU / 128-256MB
 - **Playwright**: 0.5-2 CPU / 512MB-2GB
+- **MiKTeX**: 0.5-2 CPU / 256MB-2GB
 
-Total if all services run: ~3.05 CPUs / ~2.03GB RAM
+Total if all services run: ~3.55 CPUs / ~2.28GB RAM
 
 ## Running Services
 
@@ -126,6 +127,11 @@ docker-compose -f ./docker-compose-wiremock.yml up -d
 docker-compose -f ./docker-compose-playwright.yml up -d
 ```
 
+#### MiKTeX
+```bash
+docker-compose -f ./docker-compose-miktex.yml run --rm miktex pdflatex main.tex
+```
+
 ### Using Podman Desktop
 
 #### Database Services (PostgreSQL & MongoDB)
@@ -166,6 +172,11 @@ podman-compose -f ./docker-compose-wiremock.yml up -d
 #### Playwright
 ```bash
 podman-compose -f ./docker-compose-playwright.yml up -d
+```
+
+#### MiKTeX
+```bash
+podman-compose -f ./docker-compose-miktex.yml run --rm miktex pdflatex main.tex
 ```
 
 ## Managing Services
@@ -239,6 +250,7 @@ All containers are named with their service name and version for easy identifica
 - `fake-gcs-server` - Fake Google Cloud Storage server
 - `wiremock` - WireMock API mock server
 - `playwright` - Playwright browser automation server
+- `miktex` - MiKTeX LaTeX distribution
 
 You can view running containers with:
 ```bash
@@ -256,3 +268,4 @@ podman ps
 - For production use, significantly higher resource limits are recommended
 - All credentials shown here are defaults for development only - change them for production use
 - All containers are named with their version for easy identification
+- MiKTeX: Place your `.tex` files in the `./work` folder before compiling
