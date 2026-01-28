@@ -1,0 +1,28 @@
+version: '3.8'
+name: miktex
+
+services:
+  miktex:
+    container_name: miktex
+    image: miktex/miktex:basic
+    restart: 'no'
+    stdin_open: true
+    tty: true
+    environment:
+      - MIKTEX_UID=1000
+    volumes:
+      - miktex-data:/var/lib/miktex
+      - ./work:/miktex/work
+    working_dir: /miktex/work
+    deploy:
+      resources:
+        reservations:
+          cpus: '0.5'
+          memory: 256M
+        limits:
+          cpus: '2'
+          memory: 2G
+
+volumes:
+  miktex-data:
+    driver: local
